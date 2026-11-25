@@ -13,7 +13,7 @@ public class Program {
         // creating a collection that stores Person's object
         List<Person> people = new ArrayList<>();
 
-    // create 10 person's objects and adds them to list
+        // create 10 person's objects and adds them to list
         people.add(new Person("John", "Smith", 25));
         people.add(new Person("Maria", "Garcia", 30));
         people.add(new Person("James", "Rodriguez", 22));
@@ -46,7 +46,7 @@ public class Program {
                 matchingPeople.add(person);
             }
 
-            }
+        }
         // display for matching people
         System.out.println("\nMatching people:");
 
@@ -56,9 +56,9 @@ public class Program {
             // retrieve and display each person's info
             System.out.println(
                     person.getFirstName() + " " +
-                    person.getLastName() + ", Age: " +
-                    person.getAge()
-                    );
+                            person.getLastName() + ", Age: " +
+                            person.getAge()
+            );
         }
         // display if no match is found
         if (matchingPeople.isEmpty()) {
@@ -66,5 +66,40 @@ public class Program {
         }
         // close scanner
         peopleScanner.close();
+
+        // calculate the average age of all people
+        int totalAge = 0;
+
+        // loop through the original people and add their age towards total
+        for (Person person : people) {
+            totalAge += person.getAge();
+        }
+
+        // calculate and display the average
+        double averageAge = (double) totalAge / people.size(); // returns number of people in the list
+        System.out.println("Average age: " + averageAge);
+
+        // find the oldest and youngest people
+        Person oldest = people.get(0);
+        Person youngest = people.get(0);
+
+        // loop through all people to compare their ages
+        for (Person person : people) {
+
+            if (person.getAge() > oldest.getAge()) {
+                oldest = person;
+            }
+        }
+        //display oldest and youngest people
+        System.out.println("Oldest person: " +
+                oldest.getFirstName() + " " +
+                oldest.getLastName() + ", Age: " +
+                oldest.getAge());
+
+        System.out.println("Youngest person: " +
+                youngest.getFirstName() + " " +
+                youngest.getLastName() + ", Age: " +
+                youngest.getAge());
+
     }
 }
